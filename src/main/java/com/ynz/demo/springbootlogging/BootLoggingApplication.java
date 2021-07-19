@@ -1,6 +1,7 @@
 package com.ynz.demo.springbootlogging;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("clients")
 @RequiredArgsConstructor
+@Slf4j
 public class BootLoggingApplication {
     private final ClientRepository repository;
 
@@ -23,16 +25,19 @@ public class BootLoggingApplication {
 
     @GetMapping("{email}")
     public List<ClientDto> findClientByEmail(@PathVariable("email") String email) {
+        log.info("find client by email: ");
         return repository.findByEmail(email);
     }
 
     @GetMapping(params = "entity")
     public Iterable<Client> findAllClients() {
+        log.info("find ALL clients, entity projection:");
         return repository.findAll();
     }
 
     @GetMapping
     public List<ClientDto> findAllClientDto() {
+        log.info("find ALL clients, DTO projection:");
         return repository.findAllClients();
     }
 
