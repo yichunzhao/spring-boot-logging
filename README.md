@@ -64,6 +64,12 @@ Spring recommends using the -spring variant over the plain ones.
 * logback-spring.groovy
 * logback.groovy
 
+#### Color-coded output
+If your terminal supports ANSI, color output is used to aid readability. You can set spring.output.ansi.enabled to a supported value to override the auto-detection.
+* ALWAYS: Enable ANSI-colored output.
+* DETECT:  Try to detect whether ANSI coloring capabilities are available.
+* NEVER: Disable ANSI-colored output.
+
 ## Output JPA Queries 
 
 ### Output SQL queries
